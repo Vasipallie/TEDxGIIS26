@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+
+app.get('/account', (req, res) => {
+
+});
 //Start Service
 app.listen(3000, () => {
     console.log('server is running on port 3000');
