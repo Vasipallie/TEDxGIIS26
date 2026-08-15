@@ -12,3 +12,15 @@ The website has been made using the following frameworks
 - Express
 - Supabase
 - EJS
+
+## Setup
+
+Install node, express, and supabase.
+
+Create an ENV file with the following information
+
+```
+SUPABASE_URL=
+SUPABASEKEY=
+```
+Run the index.js fiel using node index.js
