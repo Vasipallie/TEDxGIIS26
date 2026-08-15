@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.render('index');
 });
-
+/* 
 
 app.get('/login', (req, res) => {
     res.render('gam');
@@ -25,7 +25,7 @@ app.get('/login', (req, res) => {
 
 app.get('/account', (req, res) => {
     res.render('gam');
-});
+}); */
 //Start Service
 app.listen(3000, () => {
     console.log('server is running on port 3000');
