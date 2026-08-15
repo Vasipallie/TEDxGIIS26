@@ -149,6 +149,7 @@
             width:100%;
             height:calc(85vh - 3.8em);
             background-image: url('/resources/ikigai.jpg');
+            background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
             text-align: center;
@@ -159,28 +160,6 @@
             justify-content:center;
             padding: 2em;
             position:relative;
-        }
-        .hero::before{
-            content:'';
-            position:absolute;
-            top:0; left:0; right:0; bottom:0;
-            background:transparent;
-            pointer-events:none;
-        }
-        .hero-eyebrow{
-            font-family:'Inter', sans-serif;
-            font-weight:800;
-            font-size:clamp(0.9em, 1.2vw, 1.1em);
-            letter-spacing:4px;
-            text-transform:uppercase;
-            color:#ffffff;
-            background: #EB0028;
-            padding: 0.4em 1.2em;
-            margin-bottom:1.5em;
-            position:relative;
-            z-index:1;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(235, 0, 40, 0.3);
         }
         .hero h1{
             font-size:clamp(3.5em, 8vw, 6.5em);
@@ -240,7 +219,6 @@
             color: #666666;
         }
 
-        /* Animations */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -333,7 +311,7 @@
 
         @media (max-width: 768px) {
             .nav-right {
-                display: none; /* In a real app, add a hamburger menu */
+                display: none; 
             }
             .content {
                 padding: 4em 5%;
@@ -341,6 +319,67 @@
             .footer-top {
                 flex-direction: column;
             }
+            .hold {
+                flex-direction: column;
+            }
+            .maina {
+                width:100%;
+                border-left:none;
+                border-top:4px solid #EB0028;
+                padding-left:0;
+                padding-top:1em;
+            }
+            .img {
+                width:100%;
+                max-height:none;
+                border-radius:12px;
+            }
+        }
+        .maina{
+            display:flex;
+            border-left:4px solid #EB0028;
+            padding-left:1em;
+            font-size:clamp(1.16em, 1.35vw, 1.25em);
+            width:60%;
+            align-items:center;
+            flex:1;
+        }
+        .hold{
+            display:flex;
+            gap:1.5em;
+            width:100%;
+            align-items:center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.884), rgba(0, 0, 0, 0.897)), url('/resources/ted.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            background-color: rgba(0, 0, 0, 0.95);
+            border-radius: 18px;
+            padding: 1.5em 1.25em;
+            box-sizing: border-box;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .img{
+            width:min(100%, 380px);
+            height:auto;
+            max-height:260px;
+            object-fit:contain;
+            border-radius:16px;
+            background:linear-gradient(145deg, #1c1c1c, #090909);
+            border:1px solid rgba(255,255,255,0.08);
+            box-shadow:0 10px 30px rgba(0,0,0,0.22);
+            padding:0.9rem;
+            box-sizing:border-box;
+            flex-shrink:0;
+        }
+        .location-area iframe{
+            width:100%;
+            height:100%;
+            border:0;
+            display:block;
+        }
+        img{
+            border-radius: 16px;
         }
     </style>
 
@@ -356,20 +395,27 @@
         </div>
     </div>
     <div class="hero">
-        <span class="hero-eyebrow">TEDxGIIS Youth</span>
         <h1>Ikigai</h1>
         <p>A reason for being</p>
     </div>
-    <div class="content">
+    <div class="content" >
         <h1>TED<sup>x</sup>GIIS Youth</h1>
+        <div class="hold" style="background-image: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)), url('/resources/giistedx.jpg');">
+        <div class="maina">
+            <p>In the spirit of ideas worth spreading, TED has created a program called TEDx, where the x stands for independently organized TED event. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxGIIS Youth, the event is being organized by students of the GIIS Smart Campus . At TEDxGIIS Youth, TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events, including ours, are self-organized.</p>
         
-        <p>In the spirit of ideas worth spreading, TED has created a program called TEDx, where the x stands for independently organized TED event. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxGIIS Youth, the event is being organized by students of the GIIS Smart Campus . At TEDxGIIS Yoth, TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events, including ours, are self-organized.</p>
+        </div>
+        </div>
         <h1>About TED</h1>
-        <p>
-            TED is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com.
-            <br><br>
-            The annual TED Conference takes place each spring in Vancouver, British Columbia. TED's media initiatives include TED.com, where new TED Talks are posted daily. TEDx, which supports individuals or groups in hosting local, self- organized TED-style events around the world.
-        </p>
+        <div class="hold">
+            <div class="maina">
+                <p>
+                    TED is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com.
+                    <br><br>
+                    The annual TED Conference takes place each spring in Vancouver, British Columbia. TED's media initiatives include TED.com, where new TED Talks are posted daily. TEDx, which supports individuals or groups in hosting local, self- organized TED-style events around the world.
+                </p>
+            </div>
+        </div>
 
         <div class="why-attend">
             <h1>Why Should You Attend?</h1>
@@ -396,7 +442,12 @@
                 27 Punggol Field Walk, Singapore 828649
             </p>
             <div class="location-area">
-                [ Picture Area ]
+                <iframe
+                    src="https://www.google.com/maps?q=27+Punggol+Field+Walk,+Singapore+828649&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Map showing 27 Punggol Field Walk, Singapore 828649">
+                </iframe>
             </div>
         </div>
     </div>
