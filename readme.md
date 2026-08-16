@@ -16,6 +16,7 @@ The website has been made using the following frameworks
 ## Setup
 
 Install node, express, and supabase.
+`npm install node express @supabase/supabase-js`
 
 Create an ENV file with the following information
 
