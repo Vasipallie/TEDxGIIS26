@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team | TEDxGIIS Youth</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'DM Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Inter', sans-serif; margin: 0; }
+        p { color: #d7d7d7; line-height: 1.6; }
+        .nav { background: rgba(0,0,0,.85); border-bottom: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(10px); width: 100%; min-height: 3.8em; display: flex; align-items: center; padding: .5em 1em; box-sizing: border-box; position: fixed; top: 0; z-index: 100; }
+        #logopng { height: 2.6em; }
+        .nav-right { margin-left: auto; display: flex; gap: .5rem; align-items: center; overflow-x: auto; max-width: 75vw; }
+        .ciclk { color: #fff; text-decoration: none; padding: .7rem .95rem; position: relative; white-space: nowrap; font-weight: 600; }
+        .ciclk::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: transparent; transform: scaleX(0); transform-origin: left; transition: transform .18s ease, background-color .18s ease; }
+        .ciclk:hover::before, .ciclk.active::before { background: #EB0028; transform: scaleX(1); }
+        .page { max-width: 1040px; margin: 0 auto; padding: 6.2em 1.1em 2.5em; }
+        .hero { border: 1px solid rgba(255,255,255,.08); border-radius: 18px; background: linear-gradient(145deg, #151515, #090909); padding: 2em; }
+        .hero h1 { font-size: clamp(2.1em, 5vw, 3.4em); }
+        .team-section { margin-top: 2em; }
+        .team-section h2 { margin-bottom: .9em; font-size: 1.4em; color: #EB0028; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1em; }
+        .team-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 1em; }
+        .image-placeholder { height: 160px; border: 2px dashed #4a4a4a; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9a9a9a; font-size: .95em; margin-bottom: .85em; }
+        .member-name { color: #fff; font-size: 1.05em; font-weight: 700; margin: 0; }
+        .member-role { font-size: .94em; color: #cecece; margin: .3em 0 0; }
+        footer { border-top: 1px solid rgba(255,255,255,.08); margin-top: 2.5em; padding-top: 1.2em; color: #8e8e8e; font-size: .9em; }
+        @media (max-width: 768px) {
+            .nav { padding: .5em; }
+            #logopng { height: 2.2em; }
+            .ciclk { padding: .6rem .75rem; font-size: .92em; }
+            .hero { padding: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <img src="/resources/logo-white.png" alt="TEDxGIIS Logo" id="logopng">
+        <div class="nav-right">
+            <a href="/" class="ciclk">Home</a>
+            <a href="/speakers" class="ciclk">Speakers</a>
+            <a href="/team" class="ciclk active">Team</a>
+            <a href="/registration" class="ciclk">Registration</a>
+        </div>
+    </div>
+
+    <main class="page">
+        <section class="hero">
+            <h1>Our Team</h1>
+            <p>Meet the student-led team organizing TEDxGIIS Youth. Profiles are placeholders and will be updated soon.</p>
+        </section>
+
+        <section class="team-section">
+            <h2>Core Organizing Team</h2>
+            <div class="cards">
+                <article class="team-card">
+                    <div class="image-placeholder">Team Member Image Placeholder</div>
+                    <p class="member-name">Name Placeholder</p>
+                    <p class="member-role">Role Placeholder</p>
+                </article>
+                <article class="team-card">
+                    <div class="image-placeholder">Team Member Image Placeholder</div>
+                    <p class="member-name">Name Placeholder</p>
+                    <p class="member-role">Role Placeholder</p>
+                </article>
+                <article class="team-card">
+                    <div class="image-placeholder">Team Member Image Placeholder</div>
+                    <p class="member-name">Name Placeholder</p>
+                    <p class="member-role">Role Placeholder</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Volunteers & Support</h2>
+            <div class="cards">
+                <article class="team-card">
+                    <div class="image-placeholder">Team Member Image Placeholder</div>
+                    <p class="member-name">Name Placeholder</p>
+                    <p class="member-role">Role Placeholder</p>
+                </article>
+                <article class="team-card">
+                    <div class="image-placeholder">Team Member Image Placeholder</div>
+                    <p class="member-name">Name Placeholder</p>
+                    <p class="member-role">Role Placeholder</p>
+                </article>
+                <article class="team-card">
+                    <div class="image-placeholder">Team Member Image Placeholder</div>
+                    <p class="member-name">Name Placeholder</p>
+                    <p class="member-role">Role Placeholder</p>
+                </article>
+            </div>
+        </section>
+
+        <footer>© 2026 TEDxGIIS Youth. This independent TEDx event is operated under licence from TED.</footer>
+    </main>
+</body>
+</html>
