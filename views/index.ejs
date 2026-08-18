@@ -6,22 +6,43 @@
     <title>TEDxGIIS Youth</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+        :root {
+            --bg: #000000;
+            --panel: #111111;
+            --panel-strong: #1a1a1a;
+            --panel-alt: #151515;
+            --red: #EB0028;
+            --red-dark: #b8001f;
+            --text: #ffffff;
+            --muted: #e4e4e4;
+            --soft: #8e8e8e;
+            --line: rgba(255,255,255,0.08);
+        }
+        * { box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+        }
         body, html{
             margin:0;
             padding:0;
-            color:#ffffff;
-            background-color:#000000;
+            color:var(--text);
+            background-color:var(--bg);
             font-family:'DM Sans', sans-serif;
             font-weight:400;
             line-height:1.6;
             letter-spacing:0.3px;
+            overflow-x:hidden;
+        }
+        img, iframe, svg {
+            display:block;
+            max-width:100%;
         }
         h1, h2, h3{
             font-family:'Inter', sans-serif;
             font-weight:800;
             letter-spacing:-0.5px;
             margin:0;
-            color:#ffffff;
+            color:var(--text);
         }
         h1{
             font-size:clamp(2.2em, 5.4vw, 3.8em);
@@ -37,7 +58,7 @@
             font-weight:400;
             letter-spacing:0.2px;
             line-height:1.6;
-            color:#e4e4e4;
+            color:var(--muted);
         }
         .nav{
             background-color:rgba(0, 0, 0, 0.85);
@@ -47,7 +68,7 @@
             height:3.8em;
             display: flex;
             align-items:center;
-            border-bottom:1px solid rgba(255, 255, 255, 0.08);
+            border-bottom:1px solid var(--line);
             font-size:clamp(0.98em, 1.2vw, 1.08em);
             font-weight:600;
             padding-right:1.5em;
@@ -66,7 +87,7 @@
         }
 
         .ciclk{
-            color:#ffffff;
+            color:var(--text);
             text-decoration:none;
             height:auto;
             display:inline-flex;
@@ -98,7 +119,7 @@
         }
 
         .ciclk:hover::before{
-            background: #EB0028;
+            background: var(--red);
             transform: scaleX(1);
         }
         .nav-right{
@@ -183,44 +204,96 @@
             position:absolute;
             right:1.6em;
             bottom:1.6em;
-            background:#EB0028;
-            color:#ffffff;
+            background:var(--red);
+            color:var(--text);
             text-decoration:none;
             font-family:'Inter', sans-serif;
             font-weight:800;
             text-transform:uppercase;
             letter-spacing:0.8px;
-            padding:0.72em 1.1em;
+            padding:1em 1.6em;
             border-radius:10px;
             z-index:2;
+            font-size:1.2rem;
             transition:background-color 180ms ease;
         }
         .hero-register-btn:hover{
-            background:#b8001f;
+            background:var(--red-dark);
         }
         .countdown-wrap{
-            width:min(860px, 100%);
-            background:rgba(0, 0, 0, 0.62);
-            border:1px solid rgba(255, 255, 255, 0.18);
-            border-radius:16px;
-            padding:1.2em;
+            width:min(1100px, calc(100% - 1rem));
+            background:linear-gradient(180deg, rgba(18,18,18,0.96), rgba(7,7,7,0.96));
+            border:1px solid rgba(235, 0, 40, 0.45);
+            border-radius:18px;
+            padding:clamp(1.2rem, 3vw, 2rem) clamp(0.8rem, 2vw, 1.4rem) clamp(1.2rem, 2.7vw, 1.8rem);
             box-sizing:border-box;
+            text-align:center;
+            color:#ffffff;
+            margin: 0 auto;
+            box-shadow:0 18px 34px rgba(0,0,0,0.28);
         }
         .countdown-wrap h2{
-            margin:0 0 0.8em;
-            font-size:clamp(1.3em, 2vw, 1.8em);
-        }
-        .countdown-single{
-            background:linear-gradient(145deg, #1a1a1a, #0a0a0a);
-            border:1px solid rgba(255, 255, 255, 0.08);
-            border-radius:12px;
-            padding:1.1em 0.8em;
-            text-align:center;
-            font-family:'Inter', sans-serif;
-            font-size:clamp(1.15em, 2.6vw, 1.9em);
+            margin:0 0 1.05em;
+            font-size:clamp(2rem, 4vw, 4.6rem);
             font-weight:800;
-            color:#EB0028;
-            letter-spacing:0.3px;
+            line-height:1.08;
+            color:var(--text);
+        }
+        .countdown-row {
+            display:flex;
+            justify-content:center;
+            align-items:flex-end;
+            gap:clamp(0.4rem, 1.2vw, 1.5rem);
+            flex-wrap:nowrap;
+            white-space:nowrap;
+            margin:0 auto;
+            width:100%;
+            overflow:hidden;
+        }
+        .countdown-block {
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:flex-end;
+            flex:1 1 0;
+            min-width:0;
+            text-align:center;
+        }
+        .countdown-number {
+            font-family:'Inter', sans-serif;
+            font-size:clamp(2.1rem, 6.2vw, 8.5rem);
+            font-weight:800;
+            line-height:0.9;
+            letter-spacing:-0.08em;
+            color:var(--text);
+            text-shadow:0 0 18px rgba(255,255,255,0.12);
+            transform:scaleY(1.02);
+        }
+        .countdown-label {
+            font-size:clamp(0.75rem, 1.6vw, 2.2rem);
+            text-transform:lowercase;
+            font-weight:500;
+            opacity:0.95;
+            margin-top:0.4rem;
+            color:#f2f2f2;
+            white-space:nowrap;
+        }
+        .countdown-separator {
+            font-family:'Inter', sans-serif;
+            font-size:clamp(2.4rem, 6vw, 7rem);
+            font-weight:700;
+            line-height:1;
+            padding-top:0.22em;
+            opacity:0.92;
+            color:var(--red);
+        }
+        .countdown-date {
+            margin-top:1.1em;
+            font-family:'Inter', sans-serif;
+            font-size:clamp(1.7rem, 3.6vw, 3.4rem);
+            font-weight:800;
+            letter-spacing:-0.04em;
+            color:var(--text);
         }
         footer {
             background-color: #111111;
@@ -344,6 +417,48 @@
             font-weight: 600;
         }
 
+        @media (max-width: 560px) {
+            .countdown-wrap {
+                width: min(100%, calc(100% - 0.6rem));
+                padding: 1rem 0.7rem 1rem;
+            }
+            .countdown-wrap h2 {
+                margin-bottom: 0.8em;
+            }
+            .countdown-row {
+                gap: 0.35rem;
+                justify-content: center;
+            }
+            .countdown-block {
+                flex: 1 1 0;
+                min-width: 0;
+            }
+            .countdown-separator {
+                font-size: clamp(1.6rem, 5vw, 3rem);
+                padding-top: 0.12em;
+            }
+            .countdown-number {
+                letter-spacing: -0.06em;
+                font-size: clamp(1.8rem, 8vw, 4rem);
+            }
+            .countdown-label {
+                font-size: clamp(0.62rem, 2vw, 1.1rem);
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 520px) {
+            .hero {
+                min-height: 62vh;
+                height: auto;
+            }
+            .countdown-wrap {
+                padding-top: 1rem;
+            }
+            .countdown-wrap h2 {
+                margin-bottom: 0.7em;
+            }
+        }
+
         @media (max-width: 768px) {
             .content {
                 padding: 4em 5%;
@@ -456,8 +571,29 @@
         </div>
         </div>
         <div class="countdown-wrap section-reveal delay-3" aria-live="polite">
-            <h2>Time to Event (5 Oct 2026, 9:00 AM SGT)</h2>
-            <div class="countdown-single" id="countdown-single">00d 00h 00m 00s</div>
+            <h2>Time to Launch</h2>
+            <div class="countdown-row">
+                <div class="countdown-block">
+                    <span class="countdown-number" id="countdown-days">00</span>
+                    <span class="countdown-label">days</span>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-block">
+                    <span class="countdown-number" id="countdown-hours">00</span>
+                    <span class="countdown-label">hours</span>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-block">
+                    <span class="countdown-number" id="countdown-minutes">00</span>
+                    <span class="countdown-label">minutes</span>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-block">
+                    <span class="countdown-number" id="countdown-seconds">00</span>
+                    <span class="countdown-label">seconds</span>
+                </div>
+            </div>
+            <div class="countdown-date">Oct 5, 2026</div>
         </div>
         <h1 class="section-reveal delay-3">About TED</h1>
         <div class="hold section-reveal delay-4">
@@ -527,8 +663,12 @@
 
     <script>
         (function startCountdown() {
-            const countdownEl = document.getElementById('countdown-single');
-            if (!countdownEl) return;
+            const daysEl = document.getElementById('countdown-days');
+            const hoursEl = document.getElementById('countdown-hours');
+            const minutesEl = document.getElementById('countdown-minutes');
+            const secondsEl = document.getElementById('countdown-seconds');
+
+            if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
             const targetTime = Date.UTC(2026, 9, 5, 1, 0, 0, 0);
 
@@ -540,7 +680,10 @@
                 const distance = targetTime - Date.now();
 
                 if (distance <= 0) {
-                    countdownEl.textContent = '00d 00h 00m 00s';
+                    daysEl.textContent = '00';
+                    hoursEl.textContent = '00';
+                    minutesEl.textContent = '00';
+                    secondsEl.textContent = '00';
                     return true;
                 }
 
@@ -549,7 +692,10 @@
                 const minutes = Math.floor((distance / (1000 * 60)) % 60);
                 const seconds = Math.floor((distance / 1000) % 60);
 
-                countdownEl.textContent = `${pad(days)}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+                daysEl.textContent = pad(days);
+                hoursEl.textContent = pad(hours);
+                minutesEl.textContent = pad(minutes);
+                secondsEl.textContent = pad(seconds);
                 return false;
             }
 
