@@ -25,6 +25,22 @@
         .speaker-name { color: #EB0028; font-size: 1.1em; font-weight: 700; }
         .speaker-meta { font-size: .94em; color: #cecece; }
         footer { border-top: 1px solid rgba(255,255,255,.08); margin-top: 2.5em; padding-top: 1.2em; color: #8e8e8e; font-size: .9em; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero, .cards, .speaker-card, footer { animation: fadeUp .65s ease-out both; }
+        .cards { animation-delay: .08s; }
+        .speaker-card:nth-child(1) { animation-delay: .12s; }
+        .speaker-card:nth-child(2) { animation-delay: .18s; }
+        .speaker-card:nth-child(3) { animation-delay: .24s; }
+        .speaker-card:nth-child(4) { animation-delay: .30s; }
+        .speaker-card:nth-child(5) { animation-delay: .36s; }
+        .speaker-card:nth-child(6) { animation-delay: .42s; }
+        footer { animation-delay: .48s; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
         @media (max-width: 768px) {
             .nav { padding: .5em; }
             #logopng { height: 2.2em; }
