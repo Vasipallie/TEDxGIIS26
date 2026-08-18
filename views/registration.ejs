@@ -8,7 +8,7 @@
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
         body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'DM Sans', sans-serif; }
         h1, h2, h3 { font-family: 'Inter', sans-serif; margin: 0; }
-        p, li { color: #d7d7d7; line-height: 1.6; }
+        p { color: #d7d7d7; line-height: 1.6; }
         .nav { background: rgba(0,0,0,.85); border-bottom: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(10px); width: 100%; min-height: 3.8em; display: flex; align-items: center; padding: .5em 1em; box-sizing: border-box; position: fixed; top: 0; z-index: 100; }
         #logopng { height: 2.6em; }
         .nav-right { margin-left: auto; display: flex; gap: .5rem; align-items: center; overflow-x: auto; max-width: 75vw; }
@@ -18,32 +18,17 @@
         .page { max-width: 1040px; margin: 0 auto; padding: 6.2em 1.1em 2.5em; }
         .hero { border: 1px solid rgba(255,255,255,.08); border-radius: 18px; background: linear-gradient(145deg, #151515, #090909); padding: 2em; }
         .hero h1 { font-size: clamp(2.1em, 5vw, 3.4em); }
-        .layout { margin-top: 2em; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1em; }
+        .layout { margin-top: 2em; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1em; }
         .info-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 1.2em; }
         .info-card h2 { color: #EB0028; font-size: 1.25em; margin-bottom: .5em; }
-        .timeline { margin: 0; padding-left: 1.1em; }
-        .timeline li { margin-bottom: .55em; }
-        .cta-note { margin-top: 1.5em; border-left: 4px solid #EB0028; padding-left: .9em; }
+        .note { margin-top: 1.5em; border-left: 4px solid #EB0028; padding-left: .9em; color: #f2f2f2; }
         footer { border-top: 1px solid rgba(255,255,255,.08); margin-top: 2.5em; padding-top: 1.2em; color: #8e8e8e; font-size: .9em; }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(18px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero, .info-card, .cta-note, footer { animation: fadeUp .65s ease-out both; }
-        .info-card:nth-child(1) { animation-delay: .08s; }
-        .info-card:nth-child(2) { animation-delay: .14s; }
-        .info-card:nth-child(3) { animation-delay: .2s; }
-        .info-card:nth-child(4) { animation-delay: .26s; }
-        .cta-note { animation-delay: .32s; }
-        footer { animation-delay: .38s; }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation: none !important; transition: none !important; }
-        }
         @media (max-width: 768px) {
             .nav { padding: .5em; }
             #logopng { height: 2.2em; }
             .ciclk { padding: .6rem .75rem; font-size: .92em; }
             .hero { padding: 1.4em; }
+            .layout { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -61,40 +46,31 @@
     <main class="page">
         <section class="hero">
             <h1>Registration Details</h1>
-            <p>Registration information will be finalized soon. Use this page for updates on access, timings, and contact details.</p>
+            <p>Share your email address during registration to receive event details and confirmation.</p>
         </section>
 
         <section class="layout">
             <article class="info-card">
-                <h2>How to Register</h2>
-                <p>Registration link placeholder: details to be shared here once registrations open.</p>
-                <p>Form instructions placeholder: attendee details and confirmation process.</p>
+                <h2>Registration Email</h2>
+                <p>Please provide your email address in the registration form. Registration details will be sent there.</p>
+                <p>Email: tedx@school.edu</p>
             </article>
 
             <article class="info-card">
-                <h2>Ticket / Entry Notes</h2>
-                <p>Entry type placeholder: student invite / general pass / seat limits.</p>
-                <p>Check-in instructions placeholder: arrival verification and event access notes.</p>
+                <h2>Contact Us</h2>
+                <p>For registration support, contact us at:</p>
+                <p>Email: tedx@school.edu</p>
+                <p>Phone: +65 XXXX XXXX</p>
             </article>
 
             <article class="info-card">
-                <h2>Timeline</h2>
-                <ul class="timeline">
-                    <li>Registration opens — Date placeholder</li>
-                    <li>Confirmation emails — Date placeholder</li>
-                    <li>Event day check-in starts — Time placeholder</li>
-                </ul>
-            </article>
-
-            <article class="info-card">
-                <h2>Contact</h2>
-                <p>Email placeholder: tedx@school.edu</p>
-                <p>Support contact placeholder: +65 XXXX XXXX</p>
-                <p>Response window placeholder: Monday to Friday</p>
+                <h2>Event Date &amp; Time</h2>
+                <p>5 October 2026</p>
+                <p>9:00 AM Singapore Time (SGT)</p>
             </article>
         </section>
 
-        <p class="cta-note">Please check back regularly for final registration updates and confirmed timelines.</p>
+        <p class="note">Note: This event is limited to GIIS students only.</p>
 
         <footer>© 2026 TEDxGIIS Youth. This independent TEDx event is operated under licence from TED.</footer>
     </main>

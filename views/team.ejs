@@ -20,32 +20,20 @@
         .hero h1 { font-size: clamp(2.1em, 5vw, 3.4em); }
         .team-section { margin-top: 2em; }
         .team-section h2 { margin-bottom: .9em; font-size: 1.4em; color: #EB0028; }
-        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1em; }
+        .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1em; }
         .team-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 1em; }
-        .image-placeholder { height: 160px; border: 2px dashed #4a4a4a; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9a9a9a; font-size: .95em; margin-bottom: .85em; }
+        .image-placeholder { height: 160px; border: 2px dashed #4a4a4a; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9a9a9a; font-size: .95em; margin-bottom: .85em; text-align: center; }
         .member-name { color: #fff; font-size: 1.05em; font-weight: 700; margin: 0; }
         .member-role { font-size: .94em; color: #cecece; margin: .3em 0 0; }
         footer { border-top: 1px solid rgba(255,255,255,.08); margin-top: 2.5em; padding-top: 1.2em; color: #8e8e8e; font-size: .9em; }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(18px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero, .team-section, .team-card, footer { animation: fadeUp .65s ease-out both; }
-        .team-section:nth-of-type(1) { animation-delay: .08s; }
-        .team-section:nth-of-type(2) { animation-delay: .14s; }
-        .team-card:nth-child(1) { animation-delay: .2s; }
-        .team-card:nth-child(2) { animation-delay: .26s; }
-        .team-card:nth-child(3) { animation-delay: .32s; }
-        footer { animation-delay: .38s; }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation: none !important; transition: none !important; }
-        }
+        @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 768px) {
             .nav { padding: .5em; }
             #logopng { height: 2.2em; }
             .ciclk { padding: .6rem .75rem; font-size: .92em; }
             .hero { padding: 1.4em; }
         }
+        @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -62,48 +50,24 @@
     <main class="page">
         <section class="hero">
             <h1>Our Team</h1>
-            <p>Meet the student-led team organizing TEDxGIIS Youth. Profiles are placeholders and will be updated soon.</p>
+            <p>Meet the student-led team organizing TEDxGIIS Youth.</p>
         </section>
 
         <section class="team-section">
-            <h2>Core Organizing Team</h2>
+            <h2>Organizing Team</h2>
             <div class="cards">
-                <article class="team-card">
-                    <div class="image-placeholder">Team Member Image Placeholder</div>
-                    <p class="member-name">Name Placeholder</p>
-                    <p class="member-role">Role Placeholder</p>
-                </article>
-                <article class="team-card">
-                    <div class="image-placeholder">Team Member Image Placeholder</div>
-                    <p class="member-name">Name Placeholder</p>
-                    <p class="member-role">Role Placeholder</p>
-                </article>
-                <article class="team-card">
-                    <div class="image-placeholder">Team Member Image Placeholder</div>
-                    <p class="member-name">Name Placeholder</p>
-                    <p class="member-role">Role Placeholder</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="team-section">
-            <h2>Volunteers & Support</h2>
-            <div class="cards">
-                <article class="team-card">
-                    <div class="image-placeholder">Team Member Image Placeholder</div>
-                    <p class="member-name">Name Placeholder</p>
-                    <p class="member-role">Role Placeholder</p>
-                </article>
-                <article class="team-card">
-                    <div class="image-placeholder">Team Member Image Placeholder</div>
-                    <p class="member-name">Name Placeholder</p>
-                    <p class="member-role">Role Placeholder</p>
-                </article>
-                <article class="team-card">
-                    <div class="image-placeholder">Team Member Image Placeholder</div>
-                    <p class="member-name">Name Placeholder</p>
-                    <p class="member-role">Role Placeholder</p>
-                </article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
+                <article class="team-card"><div class="image-placeholder">Team Member Image Placeholder</div><p class="member-name">Name Placeholder</p><p class="member-role">Role Placeholder</p></article>
             </div>
         </section>
 

@@ -18,35 +18,22 @@
         .page { max-width: 1040px; margin: 0 auto; padding: 6.2em 1.1em 2.5em; }
         .hero { border: 1px solid rgba(255,255,255,.08); border-radius: 18px; background: linear-gradient(145deg, #151515, #090909); padding: 2em; }
         .hero h1 { font-size: clamp(2.1em, 5vw, 3.4em); }
-        .hero p { max-width: 760px; }
-        .cards { margin-top: 2em; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1em; }
+        .speaker-section { margin-top: 2em; }
+        .speaker-section h2 { margin-bottom: .9em; font-size: 1.4em; color: #EB0028; }
+        .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1em; }
         .speaker-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 1em; }
-        .image-placeholder { height: 170px; border: 2px dashed #4a4a4a; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9a9a9a; font-size: .95em; margin-bottom: .85em; }
+        .image-placeholder { height: 170px; border: 2px dashed #4a4a4a; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9a9a9a; font-size: .95em; margin-bottom: .85em; text-align: center; }
         .speaker-name { color: #EB0028; font-size: 1.1em; font-weight: 700; }
         .speaker-meta { font-size: .94em; color: #cecece; }
         footer { border-top: 1px solid rgba(255,255,255,.08); margin-top: 2.5em; padding-top: 1.2em; color: #8e8e8e; font-size: .9em; }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(18px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero, .cards, .speaker-card, footer { animation: fadeUp .65s ease-out both; }
-        .cards { animation-delay: .08s; }
-        .speaker-card:nth-child(1) { animation-delay: .12s; }
-        .speaker-card:nth-child(2) { animation-delay: .18s; }
-        .speaker-card:nth-child(3) { animation-delay: .24s; }
-        .speaker-card:nth-child(4) { animation-delay: .30s; }
-        .speaker-card:nth-child(5) { animation-delay: .36s; }
-        .speaker-card:nth-child(6) { animation-delay: .42s; }
-        footer { animation-delay: .48s; }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation: none !important; transition: none !important; }
-        }
+        @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 768px) {
             .nav { padding: .5em; }
             #logopng { height: 2.2em; }
             .ciclk { padding: .6rem .75rem; font-size: .92em; }
             .hero { padding: 1.4em; }
         }
+        @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -63,40 +50,28 @@
     <main class="page">
         <section class="hero">
             <h1>Speaker List</h1>
-            <p>Meet the voices shaping TEDxGIIS Youth. Speaker images and full profiles will be announced soon.</p>
+            <p>Meet the voices shaping TEDxGIIS Youth.</p>
         </section>
 
-        <section class="cards">
-            <article class="speaker-card">
-                <div class="image-placeholder">Speaker Image Placeholder</div>
-                <p class="speaker-name">Speaker Name Placeholder</p>
-                <p class="speaker-meta">Topic/Title Placeholder</p>
-            </article>
-            <article class="speaker-card">
-                <div class="image-placeholder">Speaker Image Placeholder</div>
-                <p class="speaker-name">Speaker Name Placeholder</p>
-                <p class="speaker-meta">Topic/Title Placeholder</p>
-            </article>
-            <article class="speaker-card">
-                <div class="image-placeholder">Speaker Image Placeholder</div>
-                <p class="speaker-name">Speaker Name Placeholder</p>
-                <p class="speaker-meta">Topic/Title Placeholder</p>
-            </article>
-            <article class="speaker-card">
-                <div class="image-placeholder">Speaker Image Placeholder</div>
-                <p class="speaker-name">Speaker Name Placeholder</p>
-                <p class="speaker-meta">Topic/Title Placeholder</p>
-            </article>
-            <article class="speaker-card">
-                <div class="image-placeholder">Speaker Image Placeholder</div>
-                <p class="speaker-name">Speaker Name Placeholder</p>
-                <p class="speaker-meta">Topic/Title Placeholder</p>
-            </article>
-            <article class="speaker-card">
-                <div class="image-placeholder">Speaker Image Placeholder</div>
-                <p class="speaker-name">Speaker Name Placeholder</p>
-                <p class="speaker-meta">Topic/Title Placeholder</p>
-            </article>
+        <section class="speaker-section">
+            <h2>External Speakers</h2>
+            <div class="cards">
+                <article class="speaker-card"><div class="image-placeholder">External Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+                <article class="speaker-card"><div class="image-placeholder">External Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+                <article class="speaker-card"><div class="image-placeholder">External Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+            </div>
+        </section>
+
+        <section class="speaker-section">
+            <h2>GIIS Speakers</h2>
+            <div class="cards">
+                <article class="speaker-card"><div class="image-placeholder">GIIS Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+                <article class="speaker-card"><div class="image-placeholder">GIIS Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+                <article class="speaker-card"><div class="image-placeholder">GIIS Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+                <article class="speaker-card"><div class="image-placeholder">GIIS Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+                <article class="speaker-card"><div class="image-placeholder">GIIS Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+                <article class="speaker-card"><div class="image-placeholder">GIIS Speaker Image Placeholder</div><p class="speaker-name">Speaker Name Placeholder</p><p class="speaker-meta">Topic/Title Placeholder</p></article>
+            </div>
         </section>
 
         <footer>© 2026 TEDxGIIS Youth. This independent TEDx event is operated under licence from TED.</footer>

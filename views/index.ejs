@@ -179,6 +179,25 @@
             letter-spacing:1px;
             font-weight: 500;
         }
+        .hero-register-btn{
+            position:absolute;
+            right:1.6em;
+            bottom:1.6em;
+            background:#EB0028;
+            color:#ffffff;
+            text-decoration:none;
+            font-family:'Inter', sans-serif;
+            font-weight:800;
+            text-transform:uppercase;
+            letter-spacing:0.8px;
+            padding:0.72em 1.1em;
+            border-radius:10px;
+            z-index:2;
+            transition:background-color 180ms ease;
+        }
+        .hero-register-btn:hover{
+            background:#b8001f;
+        }
         .countdown-wrap{
             width:min(860px, 100%);
             background:rgba(0, 0, 0, 0.62);
@@ -191,31 +210,17 @@
             margin:0 0 0.8em;
             font-size:clamp(1.3em, 2vw, 1.8em);
         }
-        .countdown-grid{
-            display:grid;
-            grid-template-columns:repeat(4, minmax(72px, 1fr));
-            gap:0.7em;
-        }
-        .countdown-item{
+        .countdown-single{
             background:linear-gradient(145deg, #1a1a1a, #0a0a0a);
             border:1px solid rgba(255, 255, 255, 0.08);
             border-radius:12px;
-            padding:0.8em 0.4em;
+            padding:1.1em 0.8em;
             text-align:center;
-        }
-        .countdown-number{
-            display:block;
             font-family:'Inter', sans-serif;
-            font-size:clamp(1.5em, 3.2vw, 2.35em);
+            font-size:clamp(1.15em, 2.6vw, 1.9em);
             font-weight:800;
             color:#EB0028;
-            line-height:1;
-        }
-        .countdown-label{
-            font-size:0.78em;
-            letter-spacing:1px;
-            text-transform:uppercase;
-            color:#d7d7d7;
+            letter-spacing:0.3px;
         }
         footer {
             background-color: #111111;
@@ -371,9 +376,6 @@
                 max-height:none;
                 border-radius:12px;
             }
-            .countdown-grid{
-                grid-template-columns:repeat(2, minmax(90px, 1fr));
-            }
         }
         .maina{
             display:flex;
@@ -443,6 +445,7 @@
     <div class="hero">
         <h1>Ikigai</h1>
         <p>A reason for being</p>
+        <a href="/registration" class="hero-register-btn">Register</a>
     </div>
     <div class="content" >
         <h1 class="section-reveal delay-1">TED<sup>x</sup>GIIS Youth</h1>
@@ -453,13 +456,8 @@
         </div>
         </div>
         <div class="countdown-wrap section-reveal delay-3" aria-live="polite">
-            <h2>Time to Event</h2>
-            <div class="countdown-grid">
-                <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
-                <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hours</span></div>
-                <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
-                <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
-            </div>
+            <h2>Time to Event (5 Oct 2026, 9:00 AM SGT)</h2>
+            <div class="countdown-single" id="countdown-single">00d 00h 00m 00s</div>
         </div>
         <h1 class="section-reveal delay-3">About TED</h1>
         <div class="hold section-reveal delay-4">
@@ -526,30 +524,23 @@
             <p>This independent TEDx event is operated under licence from TED.</p>
         </div>
     </footer>
+
     <script>
         (function startCountdown() {
-            const daysEl = document.getElementById('days');
-            const hoursEl = document.getElementById('hours');
-            const minutesEl = document.getElementById('minutes');
-            const secondsEl = document.getElementById('seconds');
-            if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+            const countdownEl = document.getElementById('countdown-single');
+            if (!countdownEl) return;
 
-            const now = new Date();
-            const year = now.getMonth() > 9 || (now.getMonth() === 9 && now.getDate() > 5) ? now.getFullYear() + 1 : now.getFullYear();
-            const target = new Date(year, 9, 5, 0, 0, 0, 0);
+            const targetTime = Date.UTC(2026, 9, 5, 1, 0, 0, 0);
 
             function pad(value) {
                 return String(value).padStart(2, '0');
             }
 
             function render() {
-                const distance = target.getTime() - Date.now();
+                const distance = targetTime - Date.now();
 
                 if (distance <= 0) {
-                    daysEl.textContent = '00';
-                    hoursEl.textContent = '00';
-                    minutesEl.textContent = '00';
-                    secondsEl.textContent = '00';
+                    countdownEl.textContent = '00d 00h 00m 00s';
                     return true;
                 }
 
@@ -558,10 +549,7 @@
                 const minutes = Math.floor((distance / (1000 * 60)) % 60);
                 const seconds = Math.floor((distance / 1000) % 60);
 
-                daysEl.textContent = pad(days);
-                hoursEl.textContent = pad(hours);
-                minutesEl.textContent = pad(minutes);
-                secondsEl.textContent = pad(seconds);
+                countdownEl.textContent = `${pad(days)}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
                 return false;
             }
 
@@ -571,5 +559,6 @@
             }, 1000);
         })();
     </script>
+
 </body>
 </html>
