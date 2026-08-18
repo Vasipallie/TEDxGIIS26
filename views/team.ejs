@@ -26,6 +26,20 @@
         .member-name { color: #fff; font-size: 1.05em; font-weight: 700; margin: 0; }
         .member-role { font-size: .94em; color: #cecece; margin: .3em 0 0; }
         footer { border-top: 1px solid rgba(255,255,255,.08); margin-top: 2.5em; padding-top: 1.2em; color: #8e8e8e; font-size: .9em; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero, .team-section, .team-card, footer { animation: fadeUp .65s ease-out both; }
+        .team-section:nth-of-type(1) { animation-delay: .08s; }
+        .team-section:nth-of-type(2) { animation-delay: .14s; }
+        .team-card:nth-child(1) { animation-delay: .2s; }
+        .team-card:nth-child(2) { animation-delay: .26s; }
+        .team-card:nth-child(3) { animation-delay: .32s; }
+        footer { animation-delay: .38s; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
         @media (max-width: 768px) {
             .nav { padding: .5em; }
             #logopng { height: 2.2em; }
