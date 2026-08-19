@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEDxGIIS Youth</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap');
         :root {
             --bg: #000000;
             --panel: #111111;
@@ -17,10 +17,14 @@
             --muted: #e4e4e4;
             --soft: #8e8e8e;
             --line: rgba(255,255,255,0.08);
+            --radius: 18px;
+            --shadow-soft: 0 18px 34px rgba(0,0,0,0.28);
+            --shadow-card: 0 10px 30px rgba(0,0,0,0.22);
         }
         * { box-sizing: border-box; }
         html {
             scroll-behavior: smooth;
+            font-size: clamp(14px, 0.7vw + 12px, 18px);
         }
         body, html{
             margin:0;
@@ -65,13 +69,13 @@
             backdrop-filter:blur(10px);
             -webkit-backdrop-filter: blur(10px);
             width:100%;
-            height:3.8em;
-            display: flex;
+            min-height:3.8em;
+            display:flex;
             align-items:center;
             border-bottom:1px solid var(--line);
             font-size:clamp(0.98em, 1.2vw, 1.08em);
             font-weight:600;
-            padding-right:1.5em;
+            padding:0.5em 1.5em 0.5em 0.8em;
             box-sizing:border-box;
             position:fixed;
             top:0;
@@ -214,7 +218,7 @@
             padding:1em 1.6em;
             border-radius:10px;
             z-index:2;
-            font-size:1.2rem;
+            font-size:clamp(0.95rem, 1.2vw + 0.5rem, 1.2rem);
             transition:background-color 180ms ease;
         }
         .hero-register-btn:hover{
@@ -224,19 +228,22 @@
             width:min(1100px, calc(100% - 1rem));
             background:linear-gradient(180deg, rgba(18,18,18,0.96), rgba(7,7,7,0.96));
             border:1px solid rgba(235, 0, 40, 0.45);
-            border-radius:18px;
+            border-radius:var(--radius);
             padding:clamp(1.2rem, 3vw, 2rem) clamp(0.8rem, 2vw, 1.4rem) clamp(1.2rem, 2.7vw, 1.8rem);
             box-sizing:border-box;
             text-align:center;
-            color:#ffffff;
-            margin: 0 auto;
-            box-shadow:0 18px 34px rgba(0,0,0,0.28);
+            color:var(--text);
+            margin:0 auto;
+            box-shadow:var(--shadow-soft);
         }
         .countdown-wrap h2{
             margin:0 0 1.05em;
+            font-family:'Barlow Condensed','Arial Narrow',sans-serif;
             font-size:clamp(2rem, 4vw, 4.6rem);
             font-weight:800;
             line-height:1.08;
+            letter-spacing:0.04em;
+            text-transform:uppercase;
             color:var(--text);
         }
         .countdown-row {
@@ -260,26 +267,28 @@
             text-align:center;
         }
         .countdown-number {
-            font-family:'Inter', sans-serif;
+            font-family:'Barlow Condensed','Arial Narrow',sans-serif;
             font-size:clamp(2.1rem, 6.2vw, 8.5rem);
             font-weight:800;
             line-height:0.9;
-            letter-spacing:-0.08em;
+            letter-spacing:-0.04em;
             color:var(--text);
             text-shadow:0 0 18px rgba(255,255,255,0.12);
             transform:scaleY(1.02);
         }
         .countdown-label {
+            font-family:'Barlow Condensed','Arial Narrow',sans-serif;
             font-size:clamp(0.75rem, 1.6vw, 2.2rem);
-            text-transform:lowercase;
-            font-weight:500;
+            text-transform:uppercase;
+            letter-spacing:0.12em;
+            font-weight:600;
             opacity:0.95;
             margin-top:0.4rem;
             color:#f2f2f2;
             white-space:nowrap;
         }
         .countdown-separator {
-            font-family:'Inter', sans-serif;
+            font-family:'Barlow Condensed','Arial Narrow',sans-serif;
             font-size:clamp(2.4rem, 6vw, 7rem);
             font-weight:700;
             line-height:1;
@@ -289,10 +298,11 @@
         }
         .countdown-date {
             margin-top:1.1em;
-            font-family:'Inter', sans-serif;
+            font-family:'Barlow Condensed','Arial Narrow',sans-serif;
             font-size:clamp(1.7rem, 3.6vw, 3.4rem);
             font-weight:800;
-            letter-spacing:-0.04em;
+            letter-spacing:0.04em;
+            text-transform:uppercase;
             color:var(--text);
         }
         footer {
@@ -391,7 +401,8 @@
         .location-area {
             margin-top: 1.5em;
             width: 100%;
-            height: 400px;
+            min-height: min(52vw, 400px);
+            height: clamp(260px, 38vw, 400px);
             background: linear-gradient(45deg, #111, #222);
             border-radius: 16px;
             display: flex;
@@ -418,6 +429,21 @@
         }
 
         @media (max-width: 560px) {
+            .nav {
+                padding: 0.5em 0.7em;
+            }
+            .nav-right {
+                gap: 0.2rem;
+                max-width: 100%;
+            }
+            .hero {
+                min-height: 68vh;
+                padding: 1.4em 1em;
+            }
+            .hero-register-btn {
+                right: 0.8em;
+                bottom: 0.9em;
+            }
             .countdown-wrap {
                 width: min(100%, calc(100% - 0.6rem));
                 padding: 1rem 0.7rem 1rem;
