@@ -21,26 +21,17 @@ app.use(bodyParser.json());
 app.use((req, res, next) => {
     const forwardedHost = req.headers['x-forwarded-host'];
     const forwardedProto = req.headers['x-forwarded-proto'];
-    const hostHeaders = (forwardedHost || req.headers.host || '')
-        .split(',')
-        .map((host) => host.trim().toLowerCase())
-        .filter(Boolean);
-    const hostNames = hostHeaders.map((hostHeader) => (
-        hostHeader.startsWith('[')
-            ? hostHeader.slice(1, hostHeader.indexOf(']'))
-            : hostHeader.split(':')[0]
-    ));
-    const protocolHeaders = (forwardedProto || req.protocol || 'http')
-        .split(',')
-        .map((protocol) => protocol.trim().toLowerCase())
-        .filter(Boolean);
-    const hasHost = hostNames.length > 0;
-    const isLocalHost = hostNames.some((hostName) => hostName === 'localhost' || hostName === '127.0.0.1' || hostName === '::1');
-    const shouldRedirectHost = hasHost && !isLocalHost && !hostNames.includes(canonicalHost);
-    const shouldRedirectProtocol = hasHost && !isLocalHost && !protocolHeaders.includes('https');
+    const hostHeader = (forwardedHost || req.headers.host || '').split(',')[0].trim().toLowerCase();
+    const hostName = hostHeader.startsWith('[')
+        ? hostHeader.slice(1, hostHeader.indexOf(']'))
+        : hostHeader.split(':')[0];
+    const protocol = (forwardedProto || req.protocol || 'http').split(',')[0].trim().toLowerCase();
+    const isLocalHost = hostName === 'localhost' || hostName === '127.0.0.1' || hostName === '::1';
     const rawPath = req.path || '/';
     const trimmedPath = rawPath !== '/' ? rawPath.replace(/\/+$/, '') || '/' : '/';
     const normalizedPath = canonicalPagePaths.has(trimmedPath) ? trimmedPath : null;
+    const shouldRedirectHost = hostName && !isLocalHost && hostName !== canonicalHost;
+    const shouldRedirectProtocol = hostName && !isLocalHost && protocol !== 'https';
     const shouldRedirectPath = rawPath !== trimmedPath && normalizedPath !== null;
 
     if (!shouldRedirectHost && !shouldRedirectProtocol && !shouldRedirectPath) {
