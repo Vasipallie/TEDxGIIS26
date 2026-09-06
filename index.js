@@ -13,7 +13,6 @@ const canonicalPagePaths = new Set(['/', '/speakers', '/team', '/registration', 
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.set('trust proxy', true);
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -22,16 +21,13 @@ app.use((req, res, next) => {
     const forwardedHost = req.headers['x-forwarded-host'];
     const forwardedProto = req.headers['x-forwarded-proto'];
     const hostHeader = (forwardedHost || req.headers.host || '').split(',')[0].trim().toLowerCase();
-    const hostName = hostHeader.startsWith('[')
-        ? hostHeader.slice(1, hostHeader.indexOf(']'))
-        : hostHeader.split(':')[0];
     const protocol = (forwardedProto || req.protocol || 'http').split(',')[0].trim().toLowerCase();
-    const isLocalHost = hostName === 'localhost' || hostName === '127.0.0.1' || hostName === '::1';
+    const isLocalHost = hostHeader.startsWith('localhost') || hostHeader.startsWith('127.0.0.1');
     const rawPath = req.path || '/';
     const trimmedPath = rawPath !== '/' ? rawPath.replace(/\/+$/, '') || '/' : '/';
     const normalizedPath = canonicalPagePaths.has(trimmedPath) ? trimmedPath : null;
-    const shouldRedirectHost = hostName && !isLocalHost && hostName !== canonicalHost;
-    const shouldRedirectProtocol = hostName && !isLocalHost && protocol !== 'https';
+    const shouldRedirectHost = hostHeader && !isLocalHost && hostHeader !== canonicalHost;
+    const shouldRedirectProtocol = hostHeader && !isLocalHost && protocol !== 'https';
     const shouldRedirectPath = rawPath !== trimmedPath && normalizedPath !== null;
 
     if (!shouldRedirectHost && !shouldRedirectProtocol && !shouldRedirectPath) {
