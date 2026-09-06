@@ -3,25 +3,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-       <loc>https://www.tedxgiis.app/</loc>
+       <loc>https://tedxgiis.app/</loc>
        <lastmod>2026-08-19T02:40:14+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>1.0000</priority>
   </url>
   <url>
-       <loc>https://www.tedxgiis.app/speakers</loc>
+       <loc>https://tedxgiis.app/speakers</loc>
        <lastmod>2026-08-19T02:40:14+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.tedxgiis.app/team</loc>
+       <loc>https://tedxgiis.app/team</loc>
        <lastmod>2026-08-19T02:40:14+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.tedxgiis.app/registration</loc>
+       <loc>https://tedxgiis.app/registration</loc>
        <lastmod>2026-08-19T02:40:14+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>

@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speakers | TEDxGIIS Youth</title>
-    <link rel="icon" href="/favicon.png" type="image/png">
+    <%- include('partials/seo') %>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
         :root {
@@ -158,18 +157,11 @@
             .page { padding-left: .8rem; padding-right: .8rem; }
         }
         @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+        <%- include('partials/mobile-nav-css') %>
     </style>
 </head>
 <body>
-    <div class="nav">
-        <img src="/resources/logo-white.png" alt="TEDxGIIS Logo" id="logopng">
-        <div class="nav-right">
-            <a href="/" class="ciclk">Home</a>
-            <a href="/speakers" class="ciclk active">Speakers</a>
-            <a href="/team" class="ciclk">Team</a>
-            <a href="/registration" class="ciclk">Registration</a>
-        </div>
-    </div>
+    <%- include('partials/nav') %>
 
     <main class="page">
         <section class="hero">
@@ -190,5 +182,6 @@
 
         <footer>© 2026 TEDxGIIS Youth. This independent TEDx event is operated under licence from TED.</footer>
     </main>
+    <%- include('partials/mobile-nav-script') %>
 </body>
 </html>

@@ -1,0 +1,33 @@
+    <div class="nav">
+        <a href="/" aria-label="TEDxGIIS Youth Home">
+            <img src="/resources/logo-white.png" alt="TEDxGIIS Logo" id="logopng">
+        </a>
+        <div class="nav-right">
+            <a href="/" class="ciclk <%= activePage === 'home' ? 'active' : '' %>">Home</a>
+            <a href="/speakers" class="ciclk <%= activePage === 'speakers' ? 'active' : '' %>">Speakers</a>
+            <a href="/team" class="ciclk <%= activePage === 'team' ? 'active' : '' %>">Team</a>
+            <a href="/registration" class="ciclk <%= activePage === 'registration' ? 'active' : '' %>">Registration</a>
+        </div>
+        <button
+            type="button"
+            class="mobile-menu-toggle"
+            aria-expanded="false"
+            aria-controls="mobile-sidebar"
+            aria-label="Open navigation menu">
+            ☰
+        </button>
+    </div>
+
+    <div class="mobile-nav-overlay" hidden></div>
+    <aside id="mobile-sidebar" class="mobile-sidebar" aria-hidden="true" tabindex="-1">
+        <div class="mobile-sidebar-head">
+            <span>Menu</span>
+            <button type="button" class="mobile-menu-close" aria-label="Close navigation menu">×</button>
+        </div>
+        <nav class="mobile-sidebar-links" aria-label="Mobile navigation">
+            <a href="/" class="<%= activePage === 'home' ? 'active' : '' %>">Home</a>
+            <a href="/speakers" class="<%= activePage === 'speakers' ? 'active' : '' %>">Speakers</a>
+            <a href="/team" class="<%= activePage === 'team' ? 'active' : '' %>">Team</a>
+            <a href="/registration" class="<%= activePage === 'registration' ? 'active' : '' %>">Registration</a>
+        </nav>
+    </aside>
