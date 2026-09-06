@@ -9,6 +9,7 @@ const app = express();
 const port = 3000;
 const canonicalHost = 'tedxgiis.app';
 const canonicalOrigin = `https://${canonicalHost}`;
+const canonicalPagePaths = new Set(['/', '/speakers', '/team', '/registration', '/robots.txt', '/sitemap.xml']);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -22,26 +23,23 @@ app.use((req, res, next) => {
     const hostHeader = (forwardedHost || req.headers.host || '').split(',')[0].trim().toLowerCase();
     const protocol = (forwardedProto || req.protocol || 'http').split(',')[0].trim().toLowerCase();
     const isLocalHost = hostHeader.startsWith('localhost') || hostHeader.startsWith('127.0.0.1');
-    const hasFileExtension = path.extname(req.path) !== '';
-    const normalizedPath = !hasFileExtension && req.path !== '/' ? req.path.replace(/\/+$/, '') || '/' : req.path;
+    const rawPath = req.path || '/';
+    const trimmedPath = rawPath !== '/' ? rawPath.replace(/\/+$/, '') || '/' : '/';
+    const normalizedPath = canonicalPagePaths.has(trimmedPath) ? trimmedPath : null;
     const shouldRedirectHost = hostHeader && !isLocalHost && hostHeader !== canonicalHost;
     const shouldRedirectProtocol = hostHeader && !isLocalHost && protocol !== 'https';
-    const shouldRedirectPath = normalizedPath !== req.path;
+    const shouldRedirectPath = rawPath !== trimmedPath && normalizedPath !== null;
 
     if (!shouldRedirectHost && !shouldRedirectProtocol && !shouldRedirectPath) {
         return next();
     }
 
+    if (normalizedPath === null) {
+        return next();
+    }
+
     const queryPart = req.url.slice(req.path.length);
     return res.redirect(301, `${canonicalOrigin}${normalizedPath}${queryPart}`);
-});
-
-app.get('/robots.txt', (req, res) => {
-    res.sendFile(path.join(__dirname, 'robots.txt'));
-});
-
-app.get('/sitemap.xml', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'sitemap.xml'));
 });
 
 const pages = [
