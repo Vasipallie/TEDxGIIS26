@@ -143,9 +143,47 @@
             display:flex;
             gap:0.5rem;
             align-items:center;
-            overflow-x:auto;
-            max-width:75vw;
+            width:max-content;
+            max-width:100%;
         }
+        .nav-menu{
+            margin-left:auto;
+            position:relative;
+            display:none;
+        }
+        .nav-toggle{
+            display:none;
+            cursor:pointer;
+            list-style:none;
+            color:var(--text);
+            padding:0.65rem 0.8rem;
+            border:1px solid var(--line);
+            border-radius:6px;
+            font-size:0.9em;
+        }
+        .nav-toggle::-webkit-details-marker{
+            display:none;
+        }
+        .menu-icon,
+        .menu-icon::before,
+        .menu-icon::after{
+            display:block;
+            width:1.2rem;
+            height:2px;
+            background:currentColor;
+            border-radius:2px;
+        }
+        .menu-icon{
+            position:relative;
+        }
+        .menu-icon::before,
+        .menu-icon::after{
+            content:'';
+            position:absolute;
+            left:0;
+        }
+        .menu-icon::before{ top:-6px; }
+        .menu-icon::after{ top:6px; }
         .content{
             padding:1.5em 0.9em;
             box-sizing:border-box;
@@ -504,6 +542,39 @@
             .nav{
                 padding-right:0.4em;
             }
+            .nav-menu{
+                margin-left:auto;
+                display:block;
+            }
+            .desktop-nav{
+                display:none;
+            }
+            .nav-toggle{
+                display:block;
+            }
+            .nav-menu .nav-right{
+                display:flex;
+                position:absolute;
+                top:calc(100% + 0.5rem);
+                right:0;
+                width:max-content;
+                max-width:100dvw;
+                padding:0.45rem;
+                flex-direction:column;
+                align-items:stretch;
+                gap:0.15rem;
+                background:rgba(0, 0, 0, 0.96);
+                border:1px solid var(--line);
+                border-radius:6px;
+                box-shadow:0 12px 28px rgba(0, 0, 0, 0.35);
+            }
+            .nav-menu:not([open]) .nav-right{
+                display:none;
+            }
+            .nav-menu .ciclk{
+                padding:0.75rem 0.8rem;
+                white-space:normal;
+            }
             .ciclk{
                 padding:0.65rem 0.75rem;
                 font-size:0.9em;
@@ -588,12 +659,21 @@
 <body>
     <div class="nav">
         <img src="/resources/logo-white.png" alt="TEDxGIIS Logo" id="logopng">
-        <div class="nav-right">
+        <nav class="nav-right desktop-nav" aria-label="Primary navigation">
             <a href="/" class="ciclk">Home</a>
             <a href="/speakers" class="ciclk">Speakers</a>
             <a href="/team" class="ciclk">Team</a>
             <a href="/registration" class="ciclk">Registration</a>
-        </div>
+        </nav>
+        <details class="nav-menu">
+            <summary class="nav-toggle" aria-label="Open navigation"><span class="menu-icon" aria-hidden="true"></span></summary>
+            <div class="nav-right">
+                <a href="/" class="ciclk">Home</a>
+                <a href="/speakers" class="ciclk">Speakers</a>
+                <a href="/team" class="ciclk">Team</a>
+                <a href="/registration" class="ciclk">Registration</a>
+            </div>
+        </details>
     </div>
     <div class="hero">
         <h1>Ikigai</h1>

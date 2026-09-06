@@ -14,13 +14,20 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const pages = ['/', '/speakers', '/team', '/registration'];
+app.get('/', (req, res) => {
+    res.render('index');
+});
 
-pages.forEach((route) => {
-    app.get(route, (req, res) => {
-        const view = route === '/' ? 'index' : route.slice(1);
-        res.render(view);
-    });
+app.get(['/speakers', '/speakers/'], (req, res) => {
+    res.render('speakers');
+});
+
+app.get(['/team', '/team/'], (req, res) => {
+    res.render('team');
+});
+
+app.get('/registration', (req, res) => {
+    res.render('registration');
 });
 
 app.listen(port, () => {
