@@ -12,8 +12,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3000;
 app.use(cookieParser());
-const supalink = process.env.SUPALINK ;
-const supakey = process.env.SUPAKEY ;
+const supalink = process.env.supalink ;
+const supakey = process.env.supakey ;
 const supabase = createClient(supalink,supakey);
 
 const TOKEN = process.env.MAILTRAP;
