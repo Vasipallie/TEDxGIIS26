@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { createClient } from '@supabase/supabase-js';
 import { MailtrapClient } from 'mailtrap';
 import dotenv from 'dotenv';
@@ -10,11 +10,11 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.use(cookieParser());
-const supalink = process.env.supalink ;
-const supakey = process.env.supakey ;
-const supabase = createClient(supalink,supakey);
+const supalink = process.env.supalink;
+const supakey = process.env.supakey;
+const supabase = supalink && supakey ? createClient(supalink, supakey) : null;
 
 const TOKEN = process.env.MAILTRAP;
 
@@ -255,7 +255,11 @@ app.post('/mark/:id', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log('server is running on port ' + port);
-    console.log('http://localhost:' + port);
-});
+if (process.env.VERCEL !== '1') {
+    app.listen(port, () => {
+        console.log('server is running on port ' + port);
+        console.log('http://localhost:' + port);
+    });
+}
+
+export default app;
