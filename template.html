@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEDxGIIS Youth Express Pass</title>
+    <style>
+        :root {
+            --ted-red: #e62b1e;
+            --ink: #111111;
+            --muted: #b5b5b5;
+            --paper: #ffffff;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "tahoma", "verdana", "arial", sans-serif;
+            margin: 0;
+            padding: 0 16px 32px;
+            background-color: var(--ink);
+            line-height: 1.55;
+        }
+
+        .tedbanner {
+            width: 100%;
+            max-width: 720px;
+            height: 12px;
+            margin: 0 auto 34px;
+            background-color: var(--ted-red);
+        }
+
+        .namebanner,
+        .content,
+        .contentq {
+            width: 100%;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .namebanner {
+            border-left: 4px solid var(--ted-red);
+            padding: 2px 0 2px 18px;
+        }
+
+        p {
+            margin: 0 0 14px;
+            font-size: 1rem;
+            color: var(--paper);
+        }
+
+        .namebanner p:first-child {
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .name {
+            margin: 0;
+            padding-bottom: 0;
+            font-size: clamp(2rem, 7vw, 3.25rem);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+
+        .content {
+            padding: 28px 0 8px;
+        }
+
+        .content p:last-child {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .contentq {
+            margin-top: 18px;
+            padding: 18px;
+            background-color: var(--paper);
+            color: #555b60;
+            border-radius: 10px;
+        }
+
+        .qr {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 18px;
+            border-radius: 10px;
+        }
+
+        .actualqr {
+            width: min(56vw, 240px);
+        }
+
+        .actualqr img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .contentq p {
+            margin: 12px 0 0;
+            color: #555b60;
+            font-size: 0.9rem;
+        }
+
+        .contentq p + p {
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tedbanner"> </div>
+    <div class="namebanner">
+    <p>We can't wait to see you at TED<sup>x</sup>GIIS Youth</p>
+    <p class="name" id="headname">Vasipalli Eshan Aditya</p>
+    </div>
+    <div class="content">
+        <p>Welcome to TED<sup>x</sup>GIIS Youth, where you can experience inspiring talks from innovative thinkers and leaders.</p>
+        <p>To make your experience at this year's TED<sup>x</sup>GIIS Youth event better, you can use the below QR code to avail express-registration on the day of the event</p>
+        <p>You can use the below QR code for express-registration:</p>
+    </div>
+    
+    <div class="contentq">
+        <div class="qr">
+            <div class="actualqr"><img src="https://media.sciencephoto.com/image/c0280133/800wm/C0280133-QR_Code_Example.jpg"></div>
+        </div>
+        <p>Name: <span id="name"></span></p>
+        <p>Class: <span id="class"></span></p>
+        <p>T-Shirt Size: <span id="size"></span></p>
+        
+    </div>
+</body>
+</html>

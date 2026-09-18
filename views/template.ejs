@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEDx GIIS Youth</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TEDx GIIS",
+      "alternateName": ["TEDxGIIS", "TEDx GIIS Youth", "TEDxGIIS App", "TEDxGIIS"],
+      "url": "https://tedxgiis.app",
+      "applicationCategory": "EventApplication",
+      "description": "Official web application for TEDx GIIS Youth events, talks, and schedule."
+    }
+    </script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
+        
+        
+        :root {
+            --ted-red: #e62b1e;
+            --ink: #111111;
+            --black: #000000;
+            --muted: #b5b5b5;
+            --paper: #ffffff;
+            --panel-strong: #1a1a1a;
+            --panel-alt: #151515;
+            --red: #EB0028;
+            --red-dark: #b8001f;
+            --muted: #d7d7d7;
+            --soft: #8e8e8e;
+            --line: rgba(255,255,255,.08);
+            --text: #ffffff;
+            --content-width: 1180px;
+        }
+
+        *, *::before, *::after{
+            box-sizing:border-box;
+        }
+        body,html{
+            margin: 0;
+            padding: 3.5em 0 0;
+            font-family: 'Host Grotesk', sans-serif;
+            background-color: var(--black);
+            color: var(--paper);
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+        nav{
+            position: fixed;
+            top:0;
+            width: 100%;
+            box-sizing: border-box;
+            display:flex;
+            gap:0.5rem;
+            font-size: 1.1rem;
+            padding: 0.2rem clamp(0.75rem, 4vw, 3rem);
+            align-items:center;
+            background: linear-gradient(45deg, #180606e7 0%, #0f1015e7 100%);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(10px);
+            min-height:3.5em;
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+        .left{
+            margin-right: auto;
+            min-width:0;
+        }
+        .left img{
+            display: block;
+            height: 3em;
+            width: auto;
+            max-width:42vw;
+            object-fit:contain;
+        }
+        a{
+            color: var(--paper);
+            text-decoration: none;
+
+        }
+        nav > div:not(.left) a{
+            display:inline-flex;
+            align-items:center;
+            min-height:3rem;
+            padding: 0 0.8rem;
+            text-align: center;
+            white-space:nowrap;
+        }
+        
+        h1, h2, h3{
+            font-family:'Host Grotesk', sans-serif;
+            font-weight:800;
+            letter-spacing:0;
+            margin:0;
+            color:var(--text);
+        }
+        h1{
+            font-size:clamp(2.2rem, 5.4vw, 4.8rem);
+            line-height:0.95;
+        }
+        h2{
+            font-size:clamp(1.65em, 3.2vw, 2.8em);
+            line-height:1;
+            margin:0;
+        }
+        p{
+            font-size:clamp(1rem, 1.35vw, 1.15rem);
+            font-weight:400;
+            letter-spacing:0.2px;
+            line-height:1.6;
+            color:var(--muted);
+        }
+
+        .content{
+            width:min(calc(100% - 2rem), var(--content-width));
+            margin:0 auto;
+            padding:clamp(2.5rem, 6vw, 5.5rem) 0 2rem;
+        }
+
+        .content > h1{
+            margin-bottom:clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .story-section{
+            position:relative;
+            margin-bottom:clamp(4rem, 8vw, 8rem);
+        }
+        .story-heading{
+            margin-bottom:1.25rem;
+            border-top:1px solid var(--line);
+            padding-top:1.25rem;
+        }
+        .story-section .hold{
+            margin-bottom:0;
+        }
+        .youth-story,
+        .about-story{
+            max-width:900px;
+            margin-left:auto;
+        }
+        .youth-story .hold,
+        .about-story .hold{
+            max-width:780px;
+            margin-left:0;
+            padding:0 0 0 1.5rem;
+            background:none !important;
+            border:0;
+            border-left:3px solid var(--red);
+            border-radius:0;
+        }
+        .youth-story .maina,
+        .about-story .maina{
+            padding:0;
+        }
+        .youth-story p,
+        .about-story p{
+            margin:0;
+            color:#c8c8c8;
+            font-size:clamp(1rem, 1.5vw, 1.2rem);
+            line-height:1.75;
+        }
+        
+        .ciclk{
+            color:var(--text);
+            text-decoration:none;
+            height:auto;
+            display:inline-flex;
+            align-items:center;
+            padding:0.75rem 1.25rem;
+            box-sizing:border-box;
+            position:relative;
+            font-weight:600;
+            font-size:inherit;
+            letter-spacing:0.4px;
+            transition:color 180ms ease;
+        }
+        .ciclk:focus-visible{
+            outline:3px solid #EB0028;
+            outline-offset:5px;
+        }
+
+        .ciclk::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            background: transparent;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 180ms ease, background-color 180ms ease;
+        }
+
+        .ciclk:hover::before{
+            background: var(--red);
+            transform: scaleX(1);
+        }
+        .footer{
+            position: relative;
+            font-family: 'Host Grotesk', sans-serif;
+            margin-top:clamp(4rem, 9vw, 8rem);
+            padding:clamp(2.5rem, 6vw, 4.5rem) max(1.25rem, 5vw) 0;
+            text-align:center;
+            background:linear-gradient(180deg, #111111 0%, #080808 100%);
+            border-top:1px solid var(--line);
+            overflow:hidden;
+        }
+        .logon{
+            display: block;
+            width:min(100%, 360px);
+            margin:0 auto;
+            height:auto;
+        }
+        hr{
+            border: none;
+            border-top:1px solid var(--line);
+            margin:0 auto 1.5rem;
+            width:min(100%, var(--content-width));
+        }
+        .footer-links{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:0.35rem 1.5rem;
+            margin-bottom:1.25rem;
+        }
+        .footer-links a{
+            color:var(--muted);
+            font-size:0.9rem;
+            font-weight:600;
+            letter-spacing:0.05em;
+            text-transform:uppercase;
+            transition:color 180ms ease;
+        }
+        .footer-links a:hover,
+        .footer-links a:focus-visible{
+            color:var(--red);
+        }
+        .footer-meta{
+            position:relative;
+            z-index:1;
+            margin:0 auto;
+            color:var(--soft);
+            font-size:0.82rem;
+            line-height:1.5;
+        }
+        .red-dip{
+            position:relative;
+            left:50%;
+            width:100vw;
+            height:clamp(2.5rem, 6vw, 5rem);
+            margin-top:1.5rem;
+            transform:translateX(-50%);
+            background:var(--red-dark);
+            border-radius:50% 50% 0 0 / 35% 35% 0 0;
+        }
+        
+        .maina {
+            width:100%;
+            border-left:none;
+            padding-left:0;
+            padding-top:1em;
+        }
+        .hold{
+            width:100%;
+            margin-bottom:1.5rem;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.884), rgba(0, 0, 0, 0.897)), url('resources/ted.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            background-color: rgba(0, 0, 0, 0.95);
+            border-radius: 18px;
+            padding:clamp(1.25rem, 3vw, 2.5rem);
+            box-sizing: border-box;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-top: 4px solid var(--red);
+        }
+        .img{
+            width:min(100%, 380px);
+            height:auto;
+            max-height:260px;
+            object-fit:contain;
+            border-radius:16px;
+            background:linear-gradient(145deg, #1c1c1c, #090909);
+            border:1px solid rgba(255,255,255,0.08);
+            box-shadow:0 10px 30px rgba(0,0,0,0.22);
+            padding:0.9rem;
+            box-sizing:border-box;
+            flex-shrink:0;
+        }
+
+        .maina{
+            padding-top:1rem;
+        }
+
+        .location-section{
+            display:grid;
+            grid-template-columns:minmax(0, 0.8fr) minmax(0, 1.2fr);
+            gap:2rem;
+            align-items:start;
+            margin-top:clamp(3rem, 8vw, 7rem);
+            padding-top:2rem;
+            border-top:1px solid var(--line);
+        }
+
+        .location-section h1{
+            grid-column:1;
+        }
+        .location-text{
+            grid-column:1; margin:0;
+        }
+        .location-area{
+            grid-column:2; grid-row:1 / span 2;
+        }
+        .location-area iframe{
+            display:block;
+            width:100%;
+            min-height:320px;
+            border:0;
+            border-radius:12px;
+        }
+
+        @media (max-width:700px){
+            nav{ gap:0; }
+            nav .left{
+                min-width:0;
+            }
+            nav > div:not(.left) a{
+                padding:0 0.4rem; font-size:0.85rem;
+            }
+            .left img{
+                width:min(42vw, 170px); height:auto; max-height:2.75em; object-fit:contain;
+            }
+            .content{
+                width:min(calc(100% - 1.25rem), var(--content-width)); padding-top:2.5rem;
+            }
+            .hold{
+                border-radius:12px;
+            }
+            .story-heading h1{
+                font-size:clamp(2rem, 12vw, 3.2rem); 
+            }
+            .about-story{
+                padding-left:0; 
+            }
+            
+            .youth-story .hold,.about-story .hold{
+                padding-left:1rem;
+            }
+            .location-section{
+                display:block;
+            }
+            .location-text{
+                margin:1rem 0 1.5rem;
+            }
+            .location-area iframe{
+                min-height:260px;
+            }
+        }
+        .scroll{
+            margin-top:1rem;
+            display:flex;
+            width:100%;
+            gap:1.25rem;
+            margin-top:0.65rem;
+            padding:0.25rem 0.25rem 1rem;
+            overflow-x:auto;
+            overscroll-behavior-x:contain;
+            scroll-snap-type:x mandatory;
+            scrollbar-color:var(--red) transparent;
+            scrollbar-width:thin;
+        }
+        .scroll::-webkit-scrollbar{
+            height:5px;
+        }
+        .scroll::-webkit-scrollbar-track{
+            background:transparent;
+        }
+        .scroll::-webkit-scrollbar-thumb{
+            background:var(--red);
+            border-radius:0;
+        }
+        .talks{
+            flex:0 0 clamp(15rem, 30vw, 21rem);
+            min-height:15rem;
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-end;
+            gap:0.4rem;
+            padding:1.25rem;
+            background:var(--panel-strong);
+            border:1px solid var(--line);
+            border-top:4px solid var(--red);
+            border-radius:0;
+            scroll-snap-align:start;
+            z-index:0;
+            transition:border-color 180ms ease, background-color 180ms ease;
+        }
+        .talks:hover{
+            background:var(--panel-alt);
+            border-color:rgba(235,0,40,0.7);
+        }
+        .talks img{
+            width:100%;
+            height:7rem;
+            object-fit:contain;
+            margin-bottom:auto;
+            opacity:0.9;
+            padding:0.5rem;
+        }
+        .talks h3{
+            font-size:1.35rem;
+            line-height:1.1;
+        }
+        .talks p{
+            margin:0;
+            font-size:0.9rem;
+            line-height:1.45;
+            color:var(--soft);
+        }
+        .talks-section{
+            margin:0;
+            padding:clamp(1rem, 3vw, 2rem) 0 clamp(2rem, 5vw, 4rem);
+        }
+        .talks-section > h1{
+            font-size:clamp(2rem, 4vw, 3.4rem);
+            line-height:0.95;
+            letter-spacing:0.02em;
+            text-transform:none;
+            margin-bottom:1rem;
+        }
+        .talks-section .scroll{
+            margin-top:0;
+            padding:0 0 1rem;
+            overflow-x:auto;
+        }
+        .talks-section .scroll > a{
+            flex:0 0 clamp(20rem, 42vw, 30rem);
+            min-width:0;
+            text-decoration:none;
+        }
+        .talks-section .talks{
+            position:relative;
+            min-height:24rem;
+            height:24rem;
+            width:100%;
+            padding:0;
+            overflow:hidden;
+            background:#000000;
+            border:0;
+        }
+        .talks-section .talks:hover{
+            background:#da0b00;
+        }
+        .talks-section .talks img{
+            position:absolute;
+            inset:0;
+            z-index:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            background:#111111;
+            padding:0;
+            opacity:0.82;
+        }
+        .talks-section .talks::after{
+            content:'';
+            position:absolute;
+            inset:0;
+            z-index:1;
+            background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.9) 100%);
+        }
+        .talks-section .talks h3,
+        .talks-section .talks p{
+            position:relative;
+            z-index:2;
+        }
+        .talks-section .talks h3{
+            margin-top:auto;
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:2;
+            line-clamp:2;
+            overflow:hidden;
+        }
+        .talks-section .talks p{
+            color:#ffffff;
+            opacity:0.85;
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:2;
+            line-clamp:2;
+            overflow:hidden;
+        }
+        @media (min-width:1100px){
+            .talks-section .scroll > a{
+                flex-basis:clamp(22rem, 30vw, 30rem);
+            }
+            .talks-section .talks{
+                height:27rem;
+                min-height:27rem;
+            }
+        }
+            .hero{
+            box-sizing:border-box;
+            margin-top:0;
+            width:100%;
+            height:calc(85vh - 3.8em);
+            background-image: url('/resources/ikigai.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color:#ffffff;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            padding: 2em;
+            position:relative;
+        }
+        .hero h1{
+            font-size:clamp(3.5em, 8vw, 6.5em);
+            text-shadow:0 10px 30px rgba(0,0,0,0.85);
+            position:relative;
+            z-index:1;
+            color: #ffffff;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+        .hero p{
+            font-size:clamp(1.2em, 2vw, 1.8em);
+            color:#e4e4e4;
+            text-shadow:0 4px 15px rgba(0,0,0,0.8);
+            margin-top:0.8em;
+            position:relative;
+            z-index:1;
+            letter-spacing:1px;
+            font-weight: 500;
+        }
+        .hero-register-btn{
+            position:absolute;
+            right:1.6em;
+            bottom:1.6em;
+            background:var(--red);
+            color:var(--text);
+            text-decoration:none;
+            font-family:'Inter', sans-serif;
+            font-weight:800;
+            text-transform:uppercase;
+            letter-spacing:0.8px;
+            padding:1em 1.6em;
+            border-radius:10px;
+            z-index:2;
+            font-size:clamp(0.95rem, 1.2vw + 0.5rem, 1.2rem);
+            transition:background-color 180ms ease;
+        }
+        .hero-register-btn:hover{
+            background:var(--red-dark);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="left"><a href="/"><img src="resources/logow.png" alt="TEDxGIIS Youth"></a></div>
+        <!--<div><a href="/speakers" class="ciclk">Speakers</a></div>
+        <div><a href="/team" class="ciclk">Team</a></div>
+        <div><a href="/registration" class="ciclk">Register</a></div> -->
+    </nav>
+    <div class="content">
+
+        
+    </div>
+    <div class="footer">
+        <hr>
+        <img src="resources/bottom.png" alt="TEDxGIIS Youth" class="logon">
+        <div class="footer-links" aria-label="Footer navigation">
+            <a href="/">Home</a>
+            <a href="/speakers">Speakers</a>
+            <a href="/team">Team</a>
+            <a href="/registration">Register</a>
+        </div>
+        <p class="footer-meta">TEDxGIIS Youth | Ideas worth spreading</p>
+        <div class="red-dip"></div>
+    </div>
+</body>
+</html>
