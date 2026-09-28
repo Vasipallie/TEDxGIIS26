@@ -120,15 +120,34 @@
             width:min(calc(100% - 2rem), var(--content-width));
             margin:0 auto;
             padding:clamp(2.5rem, 6vw, 5.5rem) 0 2rem;
+            display:flex;
+            flex-direction:column;
+            row-gap:2.5rem;
         }
 
         .content > h1{
             margin-bottom:clamp(1.5rem, 4vw, 3rem);
         }
 
+        .youth-story{
+            order:1;
+        }
+
+        .talks-section{
+            order:3;
+        }
+
+        .about-story{
+            order:4;
+        }
+
+        .location-section{
+            order:5;
+        }
+
         .story-section{
             position:relative;
-            margin-bottom:clamp(4rem, 8vw, 8rem);
+            margin-bottom:0;
         }
         .story-heading{
             margin-bottom:1.25rem;
@@ -304,7 +323,7 @@
             grid-template-columns:minmax(0, 0.8fr) minmax(0, 1.2fr);
             gap:2rem;
             align-items:start;
-            margin-top:clamp(3rem, 8vw, 7rem);
+            margin-top:0;
             padding-top:2rem;
             border-top:1px solid var(--line);
         }
@@ -565,6 +584,58 @@
         .hero-register-btn:hover{
             background:var(--red-dark);
         }
+
+        .event-countdown{
+            order:2;
+            width:100%;
+            margin-left:0;
+            margin-top:0;
+            padding:clamp(1.5rem, 4vw, 2.5rem) 0 0;
+            text-align:center;
+        }
+
+        .event-countdown-label{
+            margin:0;
+            color:var(--red);
+            font-size:clamp(1.4rem, 3vw, 2.5rem);
+            font-weight:900;
+            letter-spacing:0;
+            line-height:1;
+        }
+
+        .event-countdown-grid{
+            display:grid;
+            grid-template-columns:repeat(4, minmax(0, 1fr));
+            gap:clamp(0.5rem, 2vw, 1.5rem);
+            margin-top:1.25rem;
+        }
+
+        .countdown-unit{
+            padding:clamp(0.75rem, 2vw, 1.25rem) 0.5rem;
+            background:var(--panel-strong);
+            border-top:3px solid var(--red);
+        }
+
+        .countdown-unit-label{
+            display:block;
+            color:var(--soft);
+            font-size:clamp(0.75rem, 1.5vw, 1rem);
+            font-weight:700;
+            letter-spacing:0.08em;
+            text-transform:uppercase;
+        }
+
+        .countdown-value{
+            display:block;
+            margin-top:0.35rem;
+            color:var(--text);
+            font-size:clamp(2rem, 6vw, 4.5rem);
+            font-weight:900;
+            letter-spacing:0;
+            line-height:0.95;
+            font-variant-numeric:tabular-nums;
+        }
+
     </style>
 </head>
 <body>
@@ -629,6 +700,27 @@
             </div>
         </div>
         </section>
+        <div class="event-countdown" aria-label="Event countdown">
+            <h2 class="event-countdown-label">EVENT STARTS IN</h2>
+            <div class="event-countdown-grid" aria-live="polite">
+                <div class="countdown-unit">
+                    <span class="countdown-unit-label">Days</span>
+                    <span class="countdown-value" id="countdown-days">0</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-unit-label">Hours</span>
+                    <span class="countdown-value" id="countdown-hours">00</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-unit-label">Minutes</span>
+                    <span class="countdown-value" id="countdown-minutes">00</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-unit-label">Seconds</span>
+                    <span class="countdown-value" id="countdown-seconds">00</span>
+                </div>
+            </div>
+        </div>
         <section class="story-section about-story">
             <div class="story-heading">
                 <h1 class="section-reveal delay-1">About TED</h1>
@@ -674,5 +766,36 @@
         <p class="footer-meta">TEDxGIIS Youth | Ideas worth spreading</p>
         <div class="red-dip"></div>
     </div>
+    <script>
+        const eventStart = new Date('2026-10-05T09:00:00+08:00').getTime();
+        const countdownDays = document.getElementById('countdown-days');
+        const countdownHours = document.getElementById('countdown-hours');
+        const countdownMinutes = document.getElementById('countdown-minutes');
+        const countdownSeconds = document.getElementById('countdown-seconds');
+        const countdownGrid = document.querySelector('.event-countdown-grid');
+
+        function updateCountdown() {
+            const remaining = eventStart - Date.now();
+
+            if (remaining <= 0) {
+                countdownGrid.textContent = 'EVENT STARTS NOW';
+                return;
+            }
+
+            const totalSeconds = Math.floor(remaining / 1000);
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            countdownDays.textContent = days;
+            countdownHours.textContent = String(hours).padStart(2, '0');
+            countdownMinutes.textContent = String(minutes).padStart(2, '0');
+            countdownSeconds.textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
